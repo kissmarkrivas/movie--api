@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-
+const helmet = require('helmet');
 
 class Server{
   constructor(){
@@ -11,6 +11,16 @@ class Server{
   }
 
   middlewares(){
+    this.app.use(
+      helmet.contentSecurityPolicy({
+        directives: {
+          defaultSrc: ["'self'"],
+          scriptSrc: ["'self'", "https://kissmarkrivas.github.io/movie-web"],
+          // Otras directivas aquí según tus necesidades
+        },
+      })
+    );
+    
     this.app.use(cors())
     this.app.use( express.static('public'))
   }
