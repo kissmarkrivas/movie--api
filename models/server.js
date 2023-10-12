@@ -15,7 +15,7 @@ class Server{
       helmet.contentSecurityPolicy({
         directives: {
           defaultSrc: ["'self'"],
-          scriptSrc: ["'self'", "https://kissmarkrivas.github.io/movie-web"],
+          scriptSrc: ["'self'", "*"],
           // Otras directivas aquí según tus necesidades
         },
       })
